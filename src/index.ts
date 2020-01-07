@@ -5,7 +5,7 @@ export interface IKakao {
 export interface IKakaoMaps {
   Viewpoint: new (pan: number, tilt: number, zoom: number, panaId?: number) => IKakaoViewpoint;
   LatLng: new (latitude: number, longitude: number) => IKakaoLatLng;
-  LatLngBounds: new (sw: IKakaoLatLng, ne: IKakaoLatLng) => IKakaoLatLngBounds;
+  LatLngBounds: IKakaoLatLngBoundsConstructor;
   Coords: new (x: number, y: number) => IKakaoCoords;
   Point: new (x: number, y: number) => IKakaoPoint;
   Size: new (width: number, height: number) => IKakaoSize;
@@ -46,6 +46,11 @@ export interface IKakaoLatLng {
   equals: (IKakaoLatLng: IKakaoLatLng) => boolean;
   toCoords: () => IKakaoCoords;
   toString: () => string;
+}
+
+export interface IKakaoLatLngBoundsConstructor {
+  new(): IKakaoLatLngBounds;
+  new(sw: IKakaoLatLng, ne: IKakaoLatLng): IKakaoLatLngBounds;
 }
 
 export interface IKakaoLatLngBounds {
