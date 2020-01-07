@@ -431,7 +431,7 @@ export interface IKakaoMarker {
 }
 
 export interface IKakaoMarkerOptions {
-  map?: IKakaoMaps | IKakaoRoadview;
+  map?: IKakaoMap | IKakaoRoadview;
   position?: IKakaoLatLng | IKakaoViewpoint;
   image?: IKakaoMarkerImage;
   title?: string;
