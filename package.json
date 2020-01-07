@@ -1,6 +1,6 @@
 {
   "name": "tenel-kakao-map",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "kakao-map with typescript",
   "main": "build/index.js",
   "browser": "./build/index.js",
