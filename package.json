@@ -1,0 +1,24 @@
+{
+  "name": "@tenel/kakao-map",
+  "version": "1.0.0",
+  "description": "kakao-map with typescript",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "parcel test/index.html --open"
+  },
+  "keywords": [
+    "tenel",
+    "kakao-map"
+  ],
+  "author": "inceptionJh",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.7.4"
+  }
+}
