@@ -1,8 +1,9 @@
 {
-  "name": "@tenel/kakao-map",
+  "name": "tenel-kakao-map",
   "version": "1.0.0",
   "description": "kakao-map with typescript",
   "main": "build/index.js",
+  "browser": "./build/index.js",
   "scripts": {
     "test": "parcel test/index.html --open"
   },
@@ -10,7 +11,10 @@
     "tenel",
     "kakao-map"
   ],
-  "author": "inceptionJh",
+  "author": "jaehun kim <kjaehun6546@gmail.com>",
+  "repository": "https://github.com/inceptionJh/tenel-kakao-map",
+  "homepage": "https://github.com/inceptionJh/tenel-kakao-map",
+  "bugs": "https://github.com/inceptionJh/tenel-kakao-map/issues",
   "licenses": [
     {
       "type": "MIT",
