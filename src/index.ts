@@ -83,135 +83,48 @@ export interface IKakaoSize {
 }
 
 export interface IKakaoEvent {
-  addListener(target: any, type: any, handler: IKakaoEventHandler<any>): void;
-
-  addListener(target: IKakaoMap, type: "center_changed", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoMap, type: "zoom_start", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoMap, type: "zoom_changed", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoMap, type: "bounds_changed", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoMap, type: "idle", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoMap, type: "tilesloaded", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoMap, type: "maptypeid_changed", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoMap, type: "click", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMap, type: "dblclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMap, type: "rightclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMap, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMap, type: "dragstart", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMap, type: "drag", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMap, type: "dragend", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  addListener(target: IKakaoRoadview, type: "init", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoRoadview, type: "panoid_changed", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoRoadview, type: "viewpoint_changed", handler: IKakaoEventHandler<any>): void;
-  addListener(target: IKakaoRoadview, type: "position_changed", handler: IKakaoEventHandler<any>): void;
-
-  addListener(target: IKakaoMarker, type: "click", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMarker, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMarker, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMarker, type: "rightlick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMarker, type: "dragstart", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoMarker, type: "dragend", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  addListener(target: IKakaoPolyline, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoPolyline, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoPolyline, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoPolyline, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoPolyline, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  addListener(target: IKakaoPolygon, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoPolygon, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoPolygon, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoPolygon, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoPolygon, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  addListener(target: IKakaoCircle, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoCircle, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoCircle, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoCircle, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoCircle, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  addListener(target: IKakaoEllipse, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoEllipse, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoEllipse, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoEllipse, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoEllipse, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  addListener(target: IKakaoRectangle, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoRectangle, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoRectangle, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoRectangle, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  addListener(target: IKakaoRectangle, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  removeListener(target: any, type: any, handler: IKakaoEventHandler<any>): void;
-
-  removeListener(target: IKakaoMap, type: "zoom_start", handler: IKakaoEventHandler<any>): void;
-  removeListener(target: IKakaoMap, type: "zoom_changed", handler: IKakaoEventHandler<any>): void;
-  removeListener(target: IKakaoMap, type: "bounds_changed", handler: IKakaoEventHandler<any>): void;
-  removeListener(target: IKakaoMap, type: "idle", handler: IKakaoEventHandler<any>): void;
-  removeListener(target: IKakaoMap, type: "tilesloaded", handler: IKakaoEventHandler<any>): void;
-  removeListener(target: IKakaoMap, type: "maptypeid_changed", handler: IKakaoEventHandler<any>): void;
-  removeListener(target: IKakaoMap, type: "click", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMap, type: "dblclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMap, type: "rightclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMap, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMap, type: "dragstart", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMap, type: "drag", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMap, type: "dragend", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  removeListener(target: IKakaoRoadview, type: "init", handler: IKakaoEventHandler<any>): void;
-  removeListener(target: IKakaoRoadview, type: "panoid_changed", handler: IKakaoEventHandler<any>): void;
-  removeListener(target: IKakaoRoadview, type: "viewpoint_changed", handler: IKakaoEventHandler<any>): void;
-  removeListener(target: IKakaoRoadview, type: "position_changed", handler: IKakaoEventHandler<any>): void;
-
-  removeListener(target: IKakaoMarker, type: "click", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMarker, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMarker, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMarker, type: "rightlick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMarker, type: "dragstart", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoMarker, type: "dragend", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  removeListener(target: IKakaoPolyline, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoPolyline, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoPolyline, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoPolyline, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoPolyline, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  removeListener(target: IKakaoPolygon, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoPolygon, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoPolygon, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoPolygon, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoPolygon, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  removeListener(target: IKakaoCircle, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoCircle, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoCircle, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoCircle, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoCircle, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  removeListener(target: IKakaoEllipse, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoEllipse, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoEllipse, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoEllipse, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoEllipse, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-
-  removeListener(target: IKakaoRectangle, type: "mouseover", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoRectangle, type: "mouseout", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoRectangle, type: "mousemove", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoRectangle, type: "mousedown", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
-  removeListener(target: IKakaoRectangle, type: "mouseclick", handler: IKakaoEventHandler<IKakaoMouseEvent>): void;
+  addListener<Target extends TKakaoEventTarget, Type = TKakaoEventType<Target>, Handler = TKakaoEventHandler<Target, TKakaoEventType<Target>>>(target: Target, type: Type, handler: Handler): void;
+  removeListener<Target extends TKakaoEventTarget, Type = TKakaoEventType<Target>, Handler = TKakaoEventHandler<Target, TKakaoEventType<Target>>>(target: Target, type: Type, handler: Handler): void;
 
   trigger: (target: any, type: any, data: any) => void;
   preventMap: () => void;
-}
-
-export interface IKakaoEventHandler<E> {
-  (e: E): void;
 }
 
 export interface IKakaoMouseEvent {
   latLng: IKakaoLatLng;
   point: IKakaoPoint;
 }
+
+export type TKakaoEventTarget = IKakaoMap | IKakaoRoadview | IKakaoMarker | IKakaoPolyline | IKakaoPolygon | IKakaoCircle | IKakaoEllipse | IKakaoRectangle;
+
+export type TKakaoEventType<Target extends TKakaoEventTarget> =
+  Target extends IKakaoMap ? "zoom_start" | "zoom_changed" | "bounds_changed" | "idle" | "tilesloaded" | "maptypeid_changed" | "click" | "dblclick" | "rightclick" | "mousemove" | "dragstart" | "drag" | "dragend" :
+  Target extends IKakaoRoadview ? "init" | "panoid_changed" | "viewpoint_changed" | "position_changed" :
+  Target extends IKakaoMarker ? "click" | "mouseover" | "mouseout" | "rightclick" | "dragstart" | "dragend" :
+  Target extends IKakaoPolyline ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" :
+  Target extends IKakaoPolygon ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" :
+  Target extends IKakaoCircle ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" :
+  Target extends IKakaoEllipse ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" :
+  Target extends IKakaoRectangle ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" : never;
+
+export type TKakaoEventHandler<Target extends TKakaoEventTarget, Type extends TKakaoEventType<Target>> =
+  Target extends IKakaoMap ?
+  Type extends "zoom_start" | "zoom_changed" | "bounds_changed" | "idle" | "tilesloaded" | "maptypeid_changed" ? (() => void) :
+  Type extends "click" | "dblclick" | "rightclick" | "mousemove" | "dragstart" | "drag" | "dragend" ? ((e: IKakaoMouseEvent) => void) : never :
+  Target extends IKakaoRoadview ?
+  Type extends "init" | "panoid_changed" | "viewpoint_changed" | "position_changed" ? (() => void) : never :
+  Target extends IKakaoMarker ?
+  Type extends "click" | "mouseover" | "mouseout" | "rightclick" | "dragstart" | "dragend" ? ((e: IKakaoMouseEvent) => void) : never :
+  Target extends IKakaoPolyline ?
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never :
+  Target extends IKakaoPolygon ?
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never :
+  Target extends IKakaoCircle ?
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never :
+  Target extends IKakaoEllipse ?
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never :
+  Target extends IKakaoRectangle ?
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never : never;
 
 export interface IKakaoMapTypeControl { }
 
