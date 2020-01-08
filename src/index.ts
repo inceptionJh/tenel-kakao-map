@@ -560,8 +560,6 @@ export interface IKakaoRectangle {
   setMap: (map: IKakaoMap | IKakaoRoadview | null) => void;
   getMap: () => IKakaoMap | IKakaoRoadview | null;
   setOptions: (options: IKakaoRectangleOptions) => void;
-  setPosition: (position: IKakaoLatLng) => void;
-  getPosition: () => IKakaoLatLng;
   setBounds: (bounds: IKakaoLatLngBounds) => void
   getBounds: () => IKakaoLatLngBounds;
   setZIndex: (zIndex: number) => void;
