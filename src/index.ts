@@ -241,7 +241,7 @@ export interface IKakaoInfoWindowOptions {
 }
 
 export interface IKakaoCustomOverlay {
-  setMap: (map_or_roadview: IKakaoMap | IKakaoRoadview) => void;
+  setMap: (map_or_roadview: IKakaoMap | IKakaoRoadview | null) => void;
   getMap: () => IKakaoMap | IKakaoRoadview | null;
   setPosition: (position: IKakaoLatLng | IKakaoViewpoint) => void;
   getPosition: () => IKakaoLatLng | IKakaoViewpoint;
