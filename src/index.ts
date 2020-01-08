@@ -83,8 +83,8 @@ export interface IKakaoSize {
 }
 
 export interface IKakaoEvent {
-  addListener<Target extends TKakaoEventTarget, Type = TKakaoEventType<Target>, Handler = TKakaoEventHandler<Target, TKakaoEventType<Target>>>(target: Target, type: Type, handler: Handler): void;
-  removeListener<Target extends TKakaoEventTarget, Type = TKakaoEventType<Target>, Handler = TKakaoEventHandler<Target, TKakaoEventType<Target>>>(target: Target, type: Type, handler: Handler): void;
+  addListener<Target extends TKakaoEventTarget, Type extends TKakaoEventType<Target>, Handler extends TKakaoEventHandler<Target, Type>>(target: Target, type: Type, handler: Handler): void;
+  removeListener<Target extends TKakaoEventTarget, Type extends TKakaoEventType<Target>, Handler extends TKakaoEventHandler<Target, Type>>(target: Target, type: Type, handler: Handler): void;
 
   trigger: (target: any, type: any, data: any) => void;
   preventMap: () => void;
