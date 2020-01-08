@@ -25,7 +25,7 @@ export interface IKakaoMaps {
   AbstractOverlay: new () => IKakaoAbstractOverlay;
   Polyline: new (options?: IKakaoPolylineOptions) => IKakaoPolyline;
   Polygon: new (options?: IKakaoPolygonOptions) => IKakaoPolygon;
-  Circle: new (options?: IKakaoCircle) => IKakaoCircle;
+  Circle: new (options?: IKakaoCircleOptions) => IKakaoCircle;
   Ellipse: new (options?: IKakaoEllipseOptions) => IKakaoEllipse;
   event: IKakaoEvent;
   MapTypeId: IKakaoMapTypeId;
