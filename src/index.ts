@@ -26,6 +26,7 @@ export interface IKakaoMaps {
   Polyline: new (options?: IKakaoPolylineOptions) => IKakaoPolyline;
   Polygon: new (options?: IKakaoPolygonOptions) => IKakaoPolygon;
   Circle: new (options?: IKakaoCircleOptions) => IKakaoCircle;
+  Rectangle: new (options?: IKakaoRectangleOptions) => IKakaoRectangle;
   Ellipse: new (options?: IKakaoEllipseOptions) => IKakaoEllipse;
   event: IKakaoEvent;
   MapTypeId: IKakaoMapTypeId;
