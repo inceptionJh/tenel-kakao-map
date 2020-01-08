@@ -484,6 +484,7 @@ export interface IKakaoPolylineOptions {
 export interface IKakaoPolygon {
   setMap: (map: IKakaoMap | IKakaoRoadview | null) => void;
   getMap: () => IKakaoMap | IKakaoRoadview | null;
+  setOptions: (options: IKakaoPolygonOptions) => void;
   setPath: (path: IKakaoLatLng[] | IKakaoLatLng[][]) => void;
   getPath: () => IKakaoLatLng[] | IKakaoLatLng[][];
   getLength: () => number;
@@ -545,10 +546,10 @@ export interface IKakaoEllipse {
 
 export interface IKakaoEllipseOptions {
   center?: IKakaoLatLng;
+  rx: number;
+  ry: number;
   fillColor?: string;
   fillOpacity?: number;
-  rx?: number;
-  ry?: number;
   strokeWeight?: number;
   strokeColor?: string;
   strokeOpacity?: number;
