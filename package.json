@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "browser": "./build/index.js",
   "scripts": {
-    "test": "parcel test/index.html --open"
+    "test": "parcel _test/index.html --open"
   },
   "keywords": [
     "tenel",
