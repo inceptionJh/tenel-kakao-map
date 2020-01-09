@@ -98,7 +98,7 @@ export interface IKakaoMouseEvent {
 export type TKakaoEventTarget = IKakaoMap | IKakaoRoadview | IKakaoMarker | IKakaoPolyline | IKakaoPolygon | IKakaoCircle | IKakaoEllipse | IKakaoRectangle;
 
 export type TKakaoEventType<Target extends TKakaoEventTarget> =
-  Target extends IKakaoMap ? "zoom_start" | "zoom_changed" | "bounds_changed" | "idle" | "tilesloaded" | "maptypeid_changed" | "click" | "dblclick" | "rightclick" | "mousemove" | "dragstart" | "drag" | "dragend" :
+  Target extends IKakaoMap ? "zoom_start" | "zoom_changed" | "bounds_changed" | "idle" | "tilesloaded" | "maptypeid_changed" | "click" | "dbclick" | "rightclick" | "mousemove" | "dragstart" | "drag" | "dragend" :
   Target extends IKakaoRoadview ? "init" | "panoid_changed" | "viewpoint_changed" | "position_changed" :
   Target extends IKakaoMarker ? "click" | "mouseover" | "mouseout" | "rightclick" | "dragstart" | "dragend" :
   Target extends IKakaoPolyline ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" :
@@ -110,7 +110,7 @@ export type TKakaoEventType<Target extends TKakaoEventTarget> =
 export type TKakaoEventHandler<Target extends TKakaoEventTarget, Type extends TKakaoEventType<Target>> =
   Target extends IKakaoMap ?
   Type extends "zoom_start" | "zoom_changed" | "bounds_changed" | "idle" | "tilesloaded" | "maptypeid_changed" ? (() => void) :
-  Type extends "click" | "rightclick" | "dblclick" | "mousemove" | "dragstart" | "drag" | "dragend" ? ((e: IKakaoMouseEvent) => void) : never :
+  Type extends "click" | "rightclick" | "dbclick" | "mousemove" | "dragstart" | "drag" | "dragend" ? ((e: IKakaoMouseEvent) => void) : never :
   Target extends IKakaoRoadview ?
   Type extends "init" | "panoid_changed" | "viewpoint_changed" | "position_changed" ? (() => void) : never :
   Target extends IKakaoMarker ?
