@@ -101,11 +101,11 @@ export type TKakaoEventType<Target extends TKakaoEventTarget> =
   Target extends IKakaoMap ? "zoom_start" | "zoom_changed" | "bounds_changed" | "idle" | "tilesloaded" | "maptypeid_changed" | "click" | "dblclick" | "rightclick" | "mousemove" | "dragstart" | "drag" | "dragend" :
   Target extends IKakaoRoadview ? "init" | "panoid_changed" | "viewpoint_changed" | "position_changed" :
   Target extends IKakaoMarker ? "click" | "mouseover" | "mouseout" | "rightclick" | "dragstart" | "dragend" :
-  Target extends IKakaoPolyline ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" :
-  Target extends IKakaoPolygon ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" :
-  Target extends IKakaoCircle ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" :
-  Target extends IKakaoEllipse ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" :
-  Target extends IKakaoRectangle ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" : never;
+  Target extends IKakaoPolyline ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" :
+  Target extends IKakaoPolygon ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" :
+  Target extends IKakaoCircle ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" :
+  Target extends IKakaoEllipse ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" :
+  Target extends IKakaoRectangle ? "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" : never;
 
 export type TKakaoEventHandler<Target extends TKakaoEventTarget, Type extends TKakaoEventType<Target>> =
   Target extends IKakaoMap ?
@@ -116,15 +116,15 @@ export type TKakaoEventHandler<Target extends TKakaoEventTarget, Type extends TK
   Target extends IKakaoMarker ?
   Type extends "click" | "mouseover" | "mouseout" | "dragstart" | "dragend" ? ((e: IKakaoMouseEvent) => void) : never :
   Target extends IKakaoPolyline ?
-  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never :
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" ? ((e: IKakaoMouseEvent) => void) : never :
   Target extends IKakaoPolygon ?
-  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never :
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" ? ((e: IKakaoMouseEvent) => void) : never :
   Target extends IKakaoCircle ?
-  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never :
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" ? ((e: IKakaoMouseEvent) => void) : never :
   Target extends IKakaoEllipse ?
-  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never :
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" ? ((e: IKakaoMouseEvent) => void) : never :
   Target extends IKakaoRectangle ?
-  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "mouseclick" ? ((e: IKakaoMouseEvent) => void) : never : never;
+  Type extends "mouseover" | "mouseout" | "mousemove" | "mousedown" | "click" ? ((e: IKakaoMouseEvent) => void) : never : never;
 
 export interface IKakaoMapTypeControl { }
 
