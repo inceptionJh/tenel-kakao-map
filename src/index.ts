@@ -228,6 +228,7 @@ export interface IKakaoMapTypeId {
 }
 
 export type TKakaoMapTypeId = IKakaoMapTypeId[keyof IKakaoMapTypeId];
+export type TKakaoMapTypeIdKey = keyof IKakaoMapTypeId;
 
 export interface IKakaoCopyrightPosition {
   BOTTOMLEFT: 0;
