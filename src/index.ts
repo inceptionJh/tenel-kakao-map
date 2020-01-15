@@ -213,11 +213,16 @@ export interface IKakaoControlPosition {
   RIGHT: 7;
 }
 
-export interface IKakaoMapTypeId {
+export interface IKakaoBaseMapTypeId {
   ROADMAP: 1;
-  NORMAL: 1;
   SKYVIEW: 2;
   HYBRID: 3;
+}
+
+export type TKakaoBaseMapTypeIdKey = keyof IKakaoBaseMapTypeId;
+export type TKakaoBaseMapTypeIdValue = IKakaoBaseMapTypeId[keyof IKakaoBaseMapTypeId];
+
+export interface IKakaoOverayMapTypeId {
   OVERLAY: 4;
   ROADVIEW: 5;
   TRAFFIC: 6;
@@ -226,8 +231,11 @@ export interface IKakaoMapTypeId {
   BICYCLE_HYBRID: 9;
   USE_DISTRICT: 10;
 }
+export type TKakaoOverayMapTypeIdKey = keyof IKakaoOverayMapTypeId;
+export type TKakaoOverayMapTypeIdValue = IKakaoOverayMapTypeId[keyof IKakaoOverayMapTypeId];
 
-export type TKakaoMapTypeId = IKakaoMapTypeId[keyof IKakaoMapTypeId];
+export interface IKakaoMapTypeId extends IKakaoBaseMapTypeId, IKakaoOverayMapTypeId { }
+export type TKakaoMapTypeIdValue = IKakaoMapTypeId[keyof IKakaoMapTypeId];
 export type TKakaoMapTypeIdKey = keyof IKakaoMapTypeId;
 
 export interface IKakaoCopyrightPosition {
@@ -246,8 +254,8 @@ export interface IKakaoStaticMap {
   getCenter: () => IKakaoLatLng;
   setLevel: (level: number, options?: { animate?: boolean | { duration?: number }, anchor?: IKakaoLatLng }) => void;
   getLevel: () => number;
-  setMapTypeId: (mapTypeId: TKakaoMapTypeId) => void;
-  getMapTypeId: () => TKakaoMapTypeId;
+  setMapTypeId: (mapTypeId: TKakaoMapTypeIdValue) => void;
+  getMapTypeId: () => TKakaoMapTypeIdValue;
 }
 
 export interface IKakaoStaticMapOptions {
@@ -262,8 +270,8 @@ export interface IKakaoMap {
   getCenter: () => IKakaoLatLng;
   setLevel: (level: number, options?: { animate?: boolean | { duration?: number }, anchor?: IKakaoLatLng }) => void;
   getLevel: () => number;
-  setMapTypeId: (mapTypeId: TKakaoMapTypeId) => void;
-  getMapTypeId: () => TKakaoMapTypeId;
+  setMapTypeId: (mapTypeId: TKakaoBaseMapTypeIdValue) => void;
+  getMapTypeId: () => TKakaoBaseMapTypeIdValue;
   setBounds: (bounds: IKakaoLatLngBounds, paddingTop?: number, paddingRight?: number, paddingBottom?: number, paddingLeft?: number) => void;
   getBounds: () => IKakaoLatLngBounds;
   setMinLevel: (minLevel: number) => void;
@@ -277,8 +285,8 @@ export interface IKakaoMap {
   setZoomable: (zoomable: boolean) => void;
   getZoomable: () => boolean;
   relayout: () => void;
-  addOverlayMapTypeId: (mapTypeId: TKakaoMapTypeId) => void;
-  removeOverlayMapTypeId: (mapTypeId: TKakaoMapTypeId) => void;
+  addOverlayMapTypeId: (mapTypeId: TKakaoOverayMapTypeIdValue) => void;
+  removeOverlayMapTypeId: (mapTypeId: TKakaoOverayMapTypeIdValue) => void;
   setKeyboardShortcuts: (active: boolean) => void;
   getKeyboardShortcuts: () => boolean;
   setCopyrightPosition: (copyrightPosition: TKakaoCopyrightPosition, reversed?: boolean) => void;
@@ -288,7 +296,7 @@ export interface IKakaoMap {
 export interface IKakaoMapOptions {
   center: IKakaoLatLng;
   level?: number;
-  mapTypeId?: TKakaoMapTypeId;
+  mapTypeId?: TKakaoMapTypeIdValue;
   draggable?: boolean;
   scrollwheel?: boolean;
   disableDoubleClick?: boolean;
