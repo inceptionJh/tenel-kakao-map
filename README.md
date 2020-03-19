@@ -18,26 +18,58 @@ $ npm install tenel-kakao-map
 1. [카카오맵 API 가이드](http://apis.map.kakao.com/web/guide/) 를 따라 kakao map sdk를 window 객체에 초기화
 
 2. sdk의 타입 지정 후 api에 맞게 사용
-    ```typescript
-    // example.ts
 
-    import { IKakao } from "tenel-kakao-map";
+    - 정적 로드 후 사용 예시
+        ```typescript
+        // global.d.ts
 
-    declare var kakao: IKakao;
+        /** tsconfig.json의 include에 global.d.ts가 포함되어야함. */
+        import { IKakao } from "tenel-kakao-map";
 
-    // 카카오맵이 로드 될 컨테이너
-    const container = document.getElementById("kakao-map") as HTMLDivElement;
+        declare global {
+            var kakao: IKakao;
+        }
+        ```
 
-    // 좌표
-    const latlng = new kakao.maps.LatLng(33.450701, 126.570667);
+        ```typescript
+        // example.ts
 
-    // 줌레벨
-    const level = 3;
+        // 카카오맵이 로드 될 컨테이너
+        const container = document.getElementById("kakao-map") as HTMLDivElement;
 
-    const options = { center: latlng, level };
+        // 좌표
+        const latlng = new kakao.maps.LatLng(33.450701, 126.570667);
 
-    // 카카오맵 적용
-    new kakao.maps.Map(container, options);
-    ```
+        // 줌레벨
+        const level = 3;
+
+        const options = { center: latlng, level };
+
+        // 카카오맵 적용
+        new kakao.maps.Map(container, options);
+        ```
+
+    - 동적 로드 후 사용 예시
+        ```typescript
+        // example.ts
+
+        import { IKakao } from "tenel-kakao-map";
+
+        declare var kakao: IKakao;
+
+        // 카카오맵이 로드 될 컨테이너
+        const container = document.getElementById("kakao-map") as HTMLDivElement;
+
+        // 좌표
+        const latlng = new kakao.maps.LatLng(33.450701, 126.570667);
+
+        // 줌레벨
+        const level = 3;
+
+        const options = { center: latlng, level };
+
+        // 카카오맵 적용
+        new kakao.maps.Map(container, options);
+        ```
 
 3. 자세한 api 사용법은 [카카오맵 문서](http://apis.map.kakao.com/web/documentation/) 참조
