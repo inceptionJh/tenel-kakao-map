@@ -403,6 +403,15 @@ export interface IKakaoDrawingManager {
    * 각 요소의 생성/수정/이동/삭제 동작과 undo 또는 redo 함수 호출이 이에 해당한다.
    */
   addListener(type: "state_changed", callback: () => void): void;
+
+  removeListener(type: "select", callback: (e: { overlayType: IKakaoDrawingOverayType[keyof IKakaoDrawingOverayType] }) => void): void;
+  removeListener(type: "drawstart", callback: (mouseEvent: IKakaoDrawingMouseEvent) => void): void;
+  removeListener(type: "draw", callback: (mouseEvent: IKakaoDrawingMouseEvent) => void): void;
+  removeListener(type: "drawend", callback: (mouseEvent: IKakaoDrawingMouseEvent) => void): void;
+  removeListener(type: "drawnext", callback: (mouseEvent: IKakaoDrawingMouseEvent) => void): void;
+  removeListener(type: "cancel", callback: (e: { overlayType: IKakaoDrawingOverayType[keyof IKakaoDrawingOverayType] }) => void): void;
+  removeListener(type: "remove", callback: (e: { overlayType: IKakaoDrawingOverayType[keyof IKakaoDrawingOverayType] }) => void): void;
+  removeListener(type: "state_changed", callback: () => void): void;
 }
 
 export interface IKakaoDrawingMouseEvent {
@@ -411,8 +420,10 @@ export interface IKakaoDrawingMouseEvent {
   point: IKakaoPoint;
 
   /** 그리기 요소의 인스턴스. drawend 이벤트에서만 존재한다. */
-  target: object;
+  target: any;
 }
+
+export type TKakaoDrawingOverayTypeValue = IKakaoDrawingOverayType[keyof IKakaoDrawingOverayType];
 
 export interface IKakaoDrawingOverayType {
   MARKER: "marker";
