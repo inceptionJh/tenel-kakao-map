@@ -35,6 +35,283 @@ export interface IKakaoMaps {
   CopyrightPosition: IKakaoCopyrightPosition;
 }
 
+export interface IKakaoServices {
+  Status: IKakaoServicesStatus;
+  SortBy: IKakaoServicesSortBy;
+  Coords: IKakaoServicesCoords;
+  Places: new (map?: IKakaoMap) => IKakaoServicesPlaces;
+  Geocoder: new () => IKakaoServicesGeocoder;
+}
+
+export interface IKakaoServicesGeocoder {
+  addressSearch: (
+    /** 변환할 주소명 */
+    addr: string,
+
+
+    callback: (
+      /** 결과 상세는 {@link https://developers.kakao.com/docs/latest/ko/local/dev-guide#address-coord 로컬 REST API 주소 검색}의 응답결과 참고 */
+      result: any[],
+
+      /** {@link http://apis.map.kakao.com/web/documentation/#services_Status kakao.maps.services.Status}와 비교하여 사용 */
+      status: any,
+
+      /** {@link http://apis.map.kakao.com/web/documentation/#Pagination kakao.maps.services.Pagenation}의 인스턴스 */
+      pagination: IKakaoServicesPagination,
+    ) => void,
+
+    options?: {
+      /** 검색할 페이지. 기본값은 1 */
+      page?: number,
+
+      /** 검색할 페이지. 기본값은 10, 1~30 까지 가능 */
+      size?: number,
+    }
+  ) => void;
+
+  coord2Address: (
+    /** x 좌표, 경위도인 경우 longitude */
+    x: number,
+
+    /** y 좌표, 경위도인 경우 latitude */
+    y: number,
+
+    callback: (
+      /** 결과 상세는 {@link https://developers.kakao.com/docs/latest/ko/local/dev-guide#coord-to-address 로컬 REST API 주소 검색}의 응답결과 참고 */
+      result: any[],
+
+      /** {@link http://apis.map.kakao.com/web/documentation/#services_Status kakao.maps.services.Status}와 비교하여 사용 */
+      status: any,
+    ) => void,
+
+    options?: {
+      /** 입력 좌표 체계. 기본값은 WGS84 */
+      input_coord: IKakaoCoords,
+    }
+  ) => void;
+
+  coord2RegionCode: (
+    /** x 좌표, 경위도인 경우 longitude */
+    x: number,
+
+    /** y 좌표, 경위도인 경우 latitude */
+    y: number,
+
+    callback: (
+      /** 결과 상세는 {@link https://developers.kakao.com/docs/latest/ko/local/dev-guide#coord-to-district 로컬 REST API 주소 검색}의 응답결과 참고 */
+      result: any[],
+
+      /** {@link http://apis.map.kakao.com/web/documentation/#services_Status kakao.maps.services.Status}와 비교하여 사용 */
+      status: any,
+    ) => void,
+
+    options?: {
+      /** 입력 좌표 체계. 기본값은 WGS84 */
+      input_coord?: IKakaoCoords,
+
+      /** 출력 좌표 체계. 기본값은 WGS84 */
+      output_coord?: IKakaoCoords,
+    }
+  ) => void;
+
+  transCoord: (
+    /** 변환할 x 좌표 */
+    x: number,
+
+    /** 변환할 y 좌표 */
+    y: number,
+
+    /** 변환 결과를 받을 콜백함수 */
+    callback: (
+      /** 변환된 좌표 결과, 결과 상세는 로컬 REST API 좌표계 변환 의 응답결과 참고 */
+      result: any[],
+
+      /** {@link http://apis.map.kakao.com/web/documentation/#services_Status kakao.maps.services.Status}와 비교하여 사용 */
+      status: any,
+    ) => void,
+
+    options?: {
+      /** 입력 좌표 체계. 기본값은 WGS84 */
+      input_coord?: IKakaoCoords,
+
+      /** 출력 좌표 체계. 기본값은 WGS84 */
+      output_coord?: IKakaoCoords,
+    }
+  ) => void;
+}
+
+export interface IKakaoServicesStatus {
+  OK: any;
+  ZERO_RESULT: any;
+  ERROR: any;
+}
+
+export interface IKakaoServicesSortBy {
+  ACCURACY: any;
+  DISTANCE: any;
+}
+
+export interface IKakaoServicesCoords {
+  /** WGS84 좌표계 */
+  WGS84: any;
+
+  /** WCONGNAMUL 좌표계 */
+  WCONGNAMUL: any;
+
+  /** CONGNAMUL 좌표계 */
+  CONGNAMUL: any;
+
+  /** WTM 좌표계 */
+  WTM: any;
+
+  /** TM 좌표계 */
+  TM: any;
+}
+
+/**
+ * 검색 결과의 페이징을 담당하는 클래스.
+ *
+ * 하나의 검색 결과에 대해 페이지 이동을 쉽게 할 수 있도록 도와준다.
+ *
+ * 직접 선언은 불가능하며 검색 결과를 다루는 콜백함수의 인자로 인스턴스가 생성되어 넘어온다.
+ */
+export interface IKakaoServicesPagination {
+  /** 현재 검색의 결과 목록의 총 갯수 */
+  totalCount: number;
+
+  /** 현재 검색 결과 기준, 다음 페이지가 있는지 여부 */
+  hasNextPage: boolean;
+
+  /** 현재 검색 결과 기준, 이 전 페이지가 있는지 여부 */
+  hasPrevPage: boolean;
+
+  /** 현재 페이지 번호 */
+  current: number;
+
+  /** 다음 페이지를 검색한다. */
+  nextPage: () => void;
+
+  /** 이 전 페이지를 검색한다. */
+  prevPage: () => void;
+
+  /** 저장한 페이지를 검색한다. */
+  gotoPage: (page: number) => void;
+
+  /** 가장 처음 페이지를 검색한다. */
+  gotoFirst: () => void;
+
+  /** 가장 마지막 페이지를 검색한다. */
+  gotoLast: () => void;
+}
+
+export interface IKakaoServicesPlaces {
+  setMap: (map: IKakaoMap) => void;
+  keywordSearch: (
+    /** 검색할 키워드 */
+    keyword: string,
+
+    /** 검색 결과를 받을 콜백함수 */
+    callback: (
+      /** 결과 상세는 {@link https://developers.kakao.com/docs/latest/ko/local/dev-guide#search-by-keyword 로컬 REST API 키워드로 장소 검색}의 응답결과 참고 */
+      result: any[],
+
+      /** {@link http://apis.map.kakao.com/web/documentation/#services_Status kakao.maps.services.Status}와 비교하여 사용 */
+      status: any,
+
+      /** {@link http://apis.map.kakao.com/web/documentation/#Pagination kakao.maps.services.Pagenation}의 인스턴스 */
+      pagination: IKakaoServicesPagination,
+    ) => void,
+
+    options?: {
+      /** 키워드 필터링을 위한 카테고리 코드 */
+      category_group_code?: string,
+
+      /** 중심 좌표. 특정 지역을 기준으로 검색한다. */
+      location?: IKakaoLatLng,
+
+      /** x 좌표, longitude, location 값이 있으면 무시된다. */
+      x?: number,
+
+      /** y 좌표, latitude, location 값이 있으면 무시된다. */
+      y?: number,
+
+      /** 중심 좌표로부터의 거리(반경) 필터링 값. location / x , y / useMapCenter 중 하나와 같이 써야 의미가 있음. 미터(m) 단위. 기본값은 5000, 0~20000까지 가능 */
+      radius?: number,
+
+      /** 검색할 사각형 영역 */
+      bounds?: IKakaoLatLngBounds,
+
+      /** 사각 영역. 좌x,좌y,우x,우y 형태를 가짐. bounds 값이 있으면 무시된다. */
+      rect?: string,
+
+      /** 한 페이지에 보여질 목록 개수. 기본값은 15, 1~15까지 가능 */
+      size?: number,
+
+      /** 검색할 페이지. 기본값은 1, size 값에 따라 1~45까지 가능 */
+      page?: number,
+
+      /** 정렬 옵션. DISTANCE 일 경우 지정한 좌표값에 기반하여 동작함. 기본값은 ACCURACY (정확도 순), kakao.maps.services.SortBy 참조 */
+      sort?: any,
+
+      /** 지정한 Map 객체의 중심 좌표를 사용할지의 여부. 참일 경우, location 속성은 무시된다. 기본값은 false */
+      useMapCenter?: boolean,
+
+      /** 지정한 Map 객체의 영역을 사용할지의 여부. 참일 경우, bounds 속성은 무시된다. 기본값은 false) => void; */
+      useMapBounds?: boolean,
+    }
+  ) => void;
+
+  categorySearch: (
+    /** 검색할 카테고리 코드 */
+    code: string,
+
+    callback: (
+      result: any[],
+
+      /** {@link http://apis.map.kakao.com/web/documentation/#services_Status kakao.maps.services.Status}와 비교하여 사용 */
+      status: any,
+
+      /** {@link http://apis.map.kakao.com/web/documentation/#Pagination kakao.maps.services.Pagenation}의 인스턴스 */
+      pagination: IKakaoServicesPagination,
+    ) => void,
+
+    options?: {
+      /** 중심 좌표. 특정 지역을 기준으로 검색한다. 카테고리 검색에서는 필수. */
+      location?: IKakaoLatLng,
+
+      /** x 좌표, longitude, location 값이 있으면 무시된다. */
+      x?: number,
+
+      /** y 좌표, latitude, location 값이 있으면 무시된다. */
+      y?: number,
+
+      /** 중심 좌표로부터의 거리(반경) 필터링 값. location / x , y / useMapCenter 중 하나와 같이 써야 의미가 있음. 미터(m) 단위. 기본값은 5000, 0~20000까지 가능 */
+      radius?: number,
+
+      /** 검색할 사각형 영역 */
+      bounds?: IKakaoLatLngBounds,
+
+      /** 사각 영역. 좌x,좌y,우x,우y 형태를 가짐. bounds 값이 있으면 무시된다. */
+      rect?: string,
+
+      /** 한 페이지에 보여질 목록 개수. 기본값은 15, 1~15까지 가능 */
+      size?: number,
+
+      /** 검색할 페이지. 기본값은 1, size 값에 따라 1~45까지 가능 */
+      page?: number,
+
+      /** 정렬 옵션. DISTANCE 일 경우 지정한 좌표값에 기반하여 동작함. 기본값은 ACCURACY (정확도 순), kakao.maps.services.SortBy 참조 */
+      sort?: any,
+
+      /** 지정한 Map 객체의 중심 좌표를 사용할지의 여부. 참일 경우, location 속성은 무시된다. 기본값은 false */
+      useMapCenter?: boolean,
+
+      /** 지정한 Map 객체의 영역을 사용할지의 여부. 참일 경우, bounds 속성은 무시된다. 기본값은 false */
+      useMapBounds?: boolean,
+    },
+  ) => void;
+}
+
 export interface IKakaoDrawing {
   OverlayType: IKakaoDrawingOverayType;
   Toolbox: new (options: IKakaoDrawingToolboxOptions) => IKakaoDrawingToolbox;
