@@ -30,6 +30,7 @@ export interface IKakaoMaps {
   Ellipse: new (options?: IKakaoEllipseOptions) => IKakaoEllipse;
   event: IKakaoEvent;
   drawing: IKakaoDrawing;
+  services: IKakaoServices;
   MapTypeId: IKakaoMapTypeId;
   ControlPosition: IKakaoControlPosition;
   CopyrightPosition: IKakaoCopyrightPosition;
