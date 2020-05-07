@@ -36,6 +36,32 @@ export interface IKakaoMaps {
   CopyrightPosition: IKakaoCopyrightPosition;
 }
 
+export interface IMapProjection {
+  /**
+   * 지도 좌표에 해당하는 위치 좌표(pixel)를 반환한다.
+   * 해당 위치 좌표는 지도 엘리먼트 내부의 레이어 위치를 반영한 좌표이다.
+   */
+  pointFromCoords: (latlng: IKakaoLatLng) => IKakaoPoint;
+
+  /**
+   * 위치 좌표(pixel)에 해당하는 지도 좌표를 반환한다.
+   * 해당 위치 좌표는 지도 엘리먼트 내부의 타일 레이어 위치를 반영한 좌표이다.
+   */
+  coordsFromPoint: (point: IKakaoPoint) => IKakaoLatLng;
+
+  /**
+   * 지도 좌표에 해당하는 화면 좌표(pixel)를 반환한다.
+   * 해당 화면 좌표는 지도 엘리먼트의 좌상단을 기준으로 한 좌표이다.
+   */
+  containerPointFromCoords: (latlng: IKakaoLatLng) => IKakaoPoint;
+
+  /**
+   * 화면 좌표(pixel)에 해당하는 지도 좌표를 반환한다.
+   * 해당 화면 좌표는 지도 엘리먼트의 좌상단을 기준으로 한 좌표이다.
+   */
+  coordsFromContainerPoint: (point: IKakaoPoint) => IKakaoLatLng;
+}
+
 export interface IKakaoServices {
   Status: IKakaoServicesStatus;
   SortBy: IKakaoServicesSortBy;
@@ -971,6 +997,7 @@ export interface IKakaoMap {
   getKeyboardShortcuts: () => boolean;
   setCopyrightPosition: (copyrightPosition: TKakaoCopyrightPosition, reversed?: boolean) => void;
   setCursor: (style: string) => void;
+  getProjection: () => IKakaoMapProjection;
 }
 
 export interface IKakaoMapOptions {
